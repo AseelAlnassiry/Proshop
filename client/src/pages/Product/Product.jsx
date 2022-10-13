@@ -1,5 +1,11 @@
+//React
+import { useState, useEffect } from 'react';
+
 //React-Router
 import { Link, useParams } from 'react-router-dom';
+
+//Axios
+import axios from 'axios';
 
 //React-Bootstrap
 import { Row, Col, Image, ListGroup, ListGroupItem, Card, Button } from 'react-bootstrap';
@@ -7,15 +13,20 @@ import { Row, Col, Image, ListGroup, ListGroupItem, Card, Button } from 'react-b
 //Components
 import Rating from '../../components/Rating/Rating';
 
-//Products
-import products from '../../products';
-
 const Product = () => {
-  const params = useParams();
-  const product = products.find((p) => p._id === params.id);
+  const [product, setProduct] = useState({});
+  const params = useParams()
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const { data } = await axios.get(`/api/products/${params.id}`);
+      setProduct(data);
+    };
+
+    fetchProduct();
+  }, [params.id]);
   return (
     <>
-      <Link className="btn btn-light my-3" to="/">
+      <Link className='btn btn-light my-3' to='/'>
         Go Back
       </Link>
       <Row>
@@ -23,7 +34,7 @@ const Product = () => {
           <Image src={product.image} atl={product.name} fluid />
         </Col>
         <Col md={3}>
-          <ListGroup variant="flush">
+          <ListGroup variant='flush'>
             <ListGroupItem>
               <h3>{product.name}</h3>
             </ListGroupItem>
@@ -36,7 +47,7 @@ const Product = () => {
         </Col>
         <Col md={3}>
           <Card>
-            <ListGroup variant="flush">
+            <ListGroup variant='flush'>
               <ListGroupItem>
                 <Row>
                   <Col>Price: </Col>
