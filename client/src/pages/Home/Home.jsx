@@ -3,13 +3,15 @@ import { useEffect } from 'react';
 
 //Redux
 import { useDispatch, useSelector } from 'react-redux';
-import { listProducts } from '../../actions/productActions';
+import { listProducts } from '../../actions/productListActions';
 
 //React-BootStrap
 import { Row, Col } from 'react-bootstrap';
 
 //Components
 import ProductCard from '../../components/ProductCard/ProductCard';
+import Message from '../../components/Message/Message';
+import Loader from '../../components/Loader/Loader';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -22,8 +24,12 @@ const Home = () => {
 
   return (
     <>
-      {loading && <h2>Loading...</h2>}
-      {error && <h3>{error}</h3>}
+      {loading && (
+        <div className='loader'>
+          <Loader />
+        </div>
+      )}
+      {error && <Message variant='danger'>{error}</Message>}
       {products && products.length > 0 && (
         <>
           <h1>Latest Products</h1>
