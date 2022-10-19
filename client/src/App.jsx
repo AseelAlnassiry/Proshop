@@ -7,7 +7,8 @@ import Footer from './components/Footer/Footer';
 
 //Pages
 import Home from './pages/Home/Home';
-import Product from './pages/Product/Product'
+import Product from './pages/Product/Product';
+import Cart from './pages/Cart/Cart';
 
 //React-Bootstrap
 import { Container } from 'react-bootstrap';
@@ -22,6 +23,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/products/:id" element={<Product />} />
+            <Route path="/cart">
+              <Route path=":id" element={<Cart />} />
+              <Route path="" element={<Cart />} />
+            </Route>
           </Routes>
         </Container>
       </main>
