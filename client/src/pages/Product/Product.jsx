@@ -30,7 +30,7 @@ const Product = () => {
   const dispatch = useDispatch();
   const productInfo = useSelector((state) => state.productData);
   const { product, error, loading } = productInfo;
-  const [qty, setQty] = useState(0);
+  const [qty, setQty] = useState(1);
   const navigate = useNavigate();
   useEffect(() => {
     productData(dispatch, id);

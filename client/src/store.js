@@ -7,13 +7,17 @@ import cartSlice from './slicers/cartSlice';
 
 const middleware = [thunk];
 
+const cartItemsFromStorage = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [];
+
 const store = configureStore({
   reducer: {
     productsList: productListSlice,
     productData: productSlice,
     cartData: cartSlice,
   },
-  preloadedState: {},
+  preloadedState: {
+    cartData: { cartItems: cartItemsFromStorage },
+  },
   middleware,
 });
 
