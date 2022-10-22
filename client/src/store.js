@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import productListSlice from './slicers/productListSlice';
 import productSlice from './slicers/productSlice';
 import cartSlice from './slicers/cartSlice';
-import userLoginSlice from './slicers/userLoginSlice';
+import userSlice from './slicers/userSlice';
 
 const middleware = [thunk];
 
@@ -21,7 +21,7 @@ const store = configureStore({
     productsList: productListSlice,
     productData: productSlice,
     cartData: cartSlice,
-    userLogin: userLoginSlice,
+    userLogin: userSlice,
   },
   preloadedState: {
     cartData: { cartItems: cartItemsFromStorage },
