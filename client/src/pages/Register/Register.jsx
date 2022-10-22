@@ -24,7 +24,7 @@ const Register = () => {
   const [message, setMessage] = useState(null);
 
   const dispatch = useDispatch();
-  const userData = useSelector((state) => state.userLogin);
+  const userData = useSelector((state) => state.userData);
   const { loading, error, user } = userData;
 
   const navigate = useNavigate();
@@ -101,7 +101,7 @@ const Register = () => {
       <Row className="py-3">
         <Col>
           Existing Customer?{' '}
-          <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>Login</Link>
+          <Link to={redirect ? `/register?redirect=${redirect}` : '/login'}>Login</Link>
         </Col>
       </Row>
     </FormContainer>

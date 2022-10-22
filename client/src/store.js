@@ -12,8 +12,8 @@ const cartItemsFromStorage = localStorage.getItem('cartItems')
   ? JSON.parse(localStorage.getItem('cartItems'))
   : [];
 
-const userLoginFromStorage = localStorage.getItem('userLogin')
-  ? JSON.parse(localStorage.getItem('userLogin'))
+const userDataFromStorage = localStorage.getItem('userData')
+  ? JSON.parse(localStorage.getItem('userData'))
   : null;
 
 const store = configureStore({
@@ -21,11 +21,11 @@ const store = configureStore({
     productsList: productListSlice,
     productData: productSlice,
     cartData: cartSlice,
-    userLogin: userSlice,
+    userData: userSlice,
   },
   preloadedState: {
     cartData: { cartItems: cartItemsFromStorage },
-    userLogin: { userLogin: userLoginFromStorage },
+    userData: { user: userDataFromStorage },
   },
   middleware,
 });

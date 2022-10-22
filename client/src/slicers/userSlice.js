@@ -4,11 +4,11 @@ import { createSlice } from '@reduxjs/toolkit';
 export const userSlice = createSlice({
   name: 'user',
   initialState: {
-    user: {},
+    user: null,
   },
   reducers: {
     login_request: (state, action) => {
-      return { loading: true, user: {} };
+      return { loading: true, user: null };
     },
     login_success: (state, action) => {
       return { loading: false, user: action.payload };
@@ -17,7 +17,7 @@ export const userSlice = createSlice({
       return { loading: false, error: action.payload };
     },
     logout_request: (state, action) => {
-      return { loading: true, user: {} };
+      return { loading: true, user: null };
     },
     logout_success: (state, action) => {
       return { loading: false, user: null };
@@ -26,10 +26,10 @@ export const userSlice = createSlice({
       return { loading: false, error: action.payload };
     },
     register_request: (state, action) => {
-      return { loading: true, user: {} };
+      return { loading: true, user: null };
     },
     register_success: (state, action) => {
-      return { loading: false, user: {} };
+      return { loading: false, user: null };
     },
     register_fail: (state, action) => {
       return { loading: false, error: action.payload };

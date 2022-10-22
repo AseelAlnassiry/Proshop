@@ -21,7 +21,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
 
   const dispatch = useDispatch();
-  const userData = useSelector((state) => state.userLogin);
+  const userData = useSelector((state) => state.userData);
   const { loading, error, user } = userData;
 
   const navigate = useNavigate();

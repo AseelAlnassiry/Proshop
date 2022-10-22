@@ -25,7 +25,7 @@ export const login = (email, password) => async (dispatch, id) => {
 
     const { data } = await axios.post('/api/users/login', { email, password }, config);
     dispatch(login_success(data));
-    localStorage.setItem('userLogin', JSON.stringify(data));
+    localStorage.setItem('userData', JSON.stringify(data));
   } catch (err) {
     const error =
       err.response && err.response.data.message ? err.response.data.message : err.message;
@@ -36,7 +36,7 @@ export const login = (email, password) => async (dispatch, id) => {
 export const logout = () => async (dispatch) => {
   try {
     dispatch(logout_request());
-    localStorage.removeItem('userLogin');
+    localStorage.removeItem('userData');
     dispatch(logout_success());
   } catch (err) {
     const error =
@@ -45,7 +45,7 @@ export const logout = () => async (dispatch) => {
   }
 };
 
-export const register = (email, password, name) => async (dispatch) => {
+export const register = (name, email, password) => async (dispatch) => {
   try {
     dispatch(register_request());
     const config = {
@@ -55,7 +55,8 @@ export const register = (email, password, name) => async (dispatch) => {
     };
     const { data } = await axios.post('/api/users', { name, email, password }, config);
     dispatch(register_success());
-    localStorage.setItem('userInfo', JSON.stringify(data));
+    dispatch(login_request());
+    localStorage.setItem('userData', JSON.stringify(data));
     dispatch(login_success(data));
   } catch (err) {
     const error =
